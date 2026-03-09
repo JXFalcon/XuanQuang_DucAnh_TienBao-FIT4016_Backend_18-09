@@ -1,8 +1,12 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h2>Trang Chủ</h2>
+
+<p>Xin chào: @Context.Session.GetString("Username")</p>
+<p>Role: @Context.Session.GetString("Role")</p>
+
+@if (Context.Session.GetString("Role") == "Admin")
+{
+    <a href="/Admin/Index">Vào trang Admin</a>
+}
