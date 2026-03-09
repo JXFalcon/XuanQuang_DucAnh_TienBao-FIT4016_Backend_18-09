@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Danh sách cầu thủ";
+}
+
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Bảng xếp hạng</a></li>
+        <li class="breadcrumb-item active">Cầu thủ đội @ViewBag.TeamId</li>
+      </ol>
+    </nav>
+
+    <h2 class="mb-4">Đội hình thi đấu</h2>
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="card shadow-sm border-0 rounded-4">
+                <img src="/Image/player-default.jpg" class="card-img-top rounded-top-4" alt="Player">
+                <div class="card-body text-center">
+                    <h5 class="card-title mb-0">Erling Haaland</h5>
+                    <p class="text-primary fw-bold">Tiền đạo</p>
+                    <span class="badge bg-dark">Số 9</span>
+                </div>
+            </div>
+        </div>
+        </div>
+</div>

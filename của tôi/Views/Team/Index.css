@@ -1,0 +1,71 @@
+:root {
+    --primary-gradient: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    --card-glass: rgba(255, 255, 255, 0.9);
+}
+
+.standing-container {
+    background: #f4f7f6;
+    min-height: 100vh;
+}
+
+.standing-card {
+    border-radius: 20px;
+    overflow: hidden;
+    border: none;
+    transition: transform 0.3s ease;
+    background: white;
+}
+
+.table thead th {
+    background: #212529;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    border: none;
+    padding: 15px;
+}
+
+.team-row {
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.team-row:hover {
+    background: rgba(0,0,0,0.03) !important;
+    transform: scale(1.005);
+    box-shadow: inset 5px 0 0 #ffc107;
+}
+
+.rank-circle {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #eee;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Rank Colors */
+tr:nth-child(1) .rank-circle { background: #ffd700; color: #000; box-shadow: 0 0 10px rgba(255,215,0,0.5); }
+tr:nth-child(2) .rank-circle { background: #c0c0c0; color: #000; }
+tr:nth-child(3) .rank-circle { background: #cd7f32; color: #fff; }
+
+.points-badge {
+    font-size: 1.2rem;
+    background: #f8f9fa;
+    padding: 5px 15px;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+}
+
+.logo-container {
+    position: relative;
+    padding: 5px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
