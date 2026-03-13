@@ -1,0 +1,44 @@
+@model IEnumerable<SportsTournamentManager.Models.Tournament>
+
+<h2>Danh sách giải đấu</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Thêm giải đấu mới</a>
+</p>
+
+@if (TempData["Message"] != null)
+{
+    <script>alert('@Html.Raw(TempData["Message"])');</script>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Loại</th>
+            <th>Ngày bắt đầu</th>
+            <th>Ngày kết thúc</th>
+            <th>Môn</th>
+            <th>Địa điểm</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var t in Model)
+    {
+        <tr>
+            <td>@t.Name</td>
+            <td>@t.Type</td>
+            <td>@t.StartDate.ToString("dd/MM/yyyy")</td>
+            <td>@t.EndDate.ToString("dd/MM/yyyy")</td>
+            <td>@t.Discipline?.Name</td>
+            <td>@t.Venue?.Name</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@t.Id" class="btn btn-primary">Sửa</a>
+                <a asp-action="Details" asp-route-id="@t.Id" class="btn btn-info">Chi tiết</a>
+                <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-danger">Xóa</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

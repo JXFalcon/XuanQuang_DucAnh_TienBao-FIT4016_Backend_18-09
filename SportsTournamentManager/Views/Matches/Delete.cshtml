@@ -1,0 +1,30 @@
+@model SportsTournamentManager.Models.Match
+
+<h2>Xóa trận đấu</h2>
+
+<h4>Bạn có chắc muốn xóa trận đấu này?</h4>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-2">Ngày</dt>
+    <dd class="col-sm-10">@Model.Date.ToString("dd/MM/yyyy")</dd>
+
+    <dt class="col-sm-2">Giải đấu</dt>
+    <dd class="col-sm-10">@Model.Tournament?.Name</dd>
+
+    <dt class="col-sm-2">Đội A</dt>
+    <dd class="col-sm-10">@Model.TeamA?.Name</dd>
+
+    <dt class="col-sm-2">Đội B</dt>
+    <dd class="col-sm-10">@Model.TeamB?.Name</dd>
+
+    <dt class="col-sm-2">Tỉ số</dt>
+    <dd class="col-sm-10">@Model.ScoreA - @Model.ScoreB</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>

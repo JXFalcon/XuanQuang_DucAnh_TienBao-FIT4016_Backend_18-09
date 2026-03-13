@@ -1,0 +1,47 @@
+@model IEnumerable<SportsTournamentManager.Models.Player>
+
+<h2>Danh sách cầu thủ</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Thêm cầu thủ mới</a>
+</p>
+
+@if (TempData["Message"] != null)
+{
+    <script>
+        alert('@Html.Raw(TempData["Message"])');
+    </script>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Tuổi</th>
+            <th>Đội</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var player in Model)
+    {
+        <tr>
+            <td>@player.Name</td>
+            <td>@player.Age</td>
+            <td>@player.Team?.Name</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@player.Id" class="btn btn-primary">Sửa</a>
+                <a asp-action="Details" asp-route-id="@player.Id" class="btn btn-info">Chi tiết</a>
+
+                <form asp-action="Delete" asp-route-id="@player.Id" method="post" style="display:inline">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('Bạn có chắc muốn xóa cầu thủ này?');">
+                        Xóa
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

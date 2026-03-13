@@ -1,0 +1,36 @@
+@model IEnumerable<SportsTournamentManager.Models.Sponsor>
+
+<h2>Danh sách nhà tài trợ</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Thêm nhà tài trợ mới</a>
+</p>
+
+@if (TempData["Message"] != null)
+{
+    <script>alert('@Html.Raw(TempData["Message"])');</script>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Lĩnh vực</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var s in Model)
+    {
+        <tr>
+            <td>@s.Name</td>
+            <td>@s.Industry</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@s.Id" class="btn btn-primary">Sửa</a>
+                <a asp-action="Details" asp-route-id="@s.Id" class="btn btn-info">Chi tiết</a>
+                <a asp-action="Delete" asp-route-id="@s.Id" class="btn btn-danger">Xóa</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

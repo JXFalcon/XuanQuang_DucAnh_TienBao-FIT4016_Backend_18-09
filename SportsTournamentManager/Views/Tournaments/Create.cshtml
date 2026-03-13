@@ -1,0 +1,44 @@
+@model SportsTournamentManager.Models.Tournament
+@using SportsTournamentManager.Models
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="@ViewData["Action"]" method="post">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Name">Tên giải đấu</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Type">Loại</label>
+        <select asp-for="Type" class="form-control"
+                asp-items="Html.GetEnumSelectList<TournamentType>()"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StartDate">Ngày bắt đầu</label>
+        <input asp-for="StartDate" type="date" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EndDate">Ngày kết thúc</label>
+        <input asp-for="EndDate" type="date" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DisciplineId">Môn</label>
+        <select asp-for="DisciplineId" class="form-control" asp-items="ViewBag.DisciplineId"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VenueId">Địa điểm</label>
+        <select asp-for="VenueId" class="form-control" asp-items="ViewBag.VenueId"></select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Lưu</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>

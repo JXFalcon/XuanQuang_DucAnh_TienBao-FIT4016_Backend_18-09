@@ -1,0 +1,22 @@
+@model SportsTournamentManager.Models.Discipline
+
+<h2>Chi tiết môn thi đấu</h2>
+
+<dl class="row">
+    <dt class="col-sm-2">Tên môn</dt>
+    <dd class="col-sm-10">@Model.Name</dd>
+
+    <dt class="col-sm-2">Loại bộ môn</dt>
+    <dd class="col-sm-10">@Model.Type</dd>
+</dl>
+
+<h4>Danh sách giải đấu</h4>
+<ul>
+@foreach (var t in Model.Tournaments)
+{
+    <li>@t.Name (@t.StartDate.ToString("dd/MM/yyyy") - @t.EndDate.ToString("dd/MM/yyyy"))</li>
+}
+</ul>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Sửa</a>
+<a asp-action="Index" class="btn btn-secondary">Quay lại</a>

@@ -1,0 +1,32 @@
+@model SportsTournamentManager.Models.Team
+
+<h2>Sửa đội</h2>
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Country"></label>
+        <input asp-for="Country" class="form-control" />
+    </div>
+
+    <!-- Coach để trống cũng được -->
+    <div class="form-group">
+        <label asp-for="Coach.Name"></label>
+        <input asp-for="Coach.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Coach.Nationality"></label>
+        <input asp-for="Coach.Nationality" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Cập nhật</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>

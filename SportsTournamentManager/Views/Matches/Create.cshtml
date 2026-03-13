@@ -1,0 +1,36 @@
+@model SportsTournamentManager.Models.Match
+
+<h2>Thêm trận đấu mới</h2>
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Date">Ngày thi đấu</label>
+        <input asp-for="Date" type="date" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="TournamentId">Giải đấu</label>
+        <select asp-for="TournamentId" class="form-control" asp-items="ViewBag.TournamentId"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="TeamAId">Đội A</label>
+        <select asp-for="TeamAId" class="form-control" asp-items="ViewBag.TeamAId"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="TeamBId">Đội B</label>
+        <select asp-for="TeamBId" class="form-control" asp-items="ViewBag.TeamBId"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="ScoreA">Tỉ số A</label>
+        <input asp-for="ScoreA" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ScoreB">Tỉ số B</label>
+        <input asp-for="ScoreB" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Lưu</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>

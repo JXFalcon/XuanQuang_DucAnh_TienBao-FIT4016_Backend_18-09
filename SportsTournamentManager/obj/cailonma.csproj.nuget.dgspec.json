@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\OS\\Documents\\java, C#\\C#_modern\\SportsTournamentManager\\cailonma.csproj": {}
+    "C:\\Users\\OS\\Documents\\java, c#\\C#_modern\\sportstournamentmanager\\cailonma.csproj": {}
   },
   "projects": {
-    "C:\\Users\\OS\\Documents\\java, C#\\C#_modern\\SportsTournamentManager\\cailonma.csproj": {
+    "C:\\Users\\OS\\Documents\\java, c#\\C#_modern\\sportstournamentmanager\\cailonma.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\OS\\Documents\\java, C#\\C#_modern\\SportsTournamentManager\\cailonma.csproj",
+        "projectUniqueName": "C:\\Users\\OS\\Documents\\java, c#\\C#_modern\\sportstournamentmanager\\cailonma.csproj",
         "projectName": "cailonma",
-        "projectPath": "C:\\Users\\OS\\Documents\\java, C#\\C#_modern\\SportsTournamentManager\\cailonma.csproj",
+        "projectPath": "C:\\Users\\OS\\Documents\\java, c#\\C#_modern\\sportstournamentmanager\\cailonma.csproj",
         "packagesPath": "C:\\Users\\OS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\OS\\Documents\\java, C#\\C#_modern\\SportsTournamentManager\\obj\\",
+        "outputPath": "C:\\Users\\OS\\Documents\\java, c#\\C#_modern\\sportstournamentmanager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\OS\\AppData\\Roaming\\NuGet\\NuGet.Config"

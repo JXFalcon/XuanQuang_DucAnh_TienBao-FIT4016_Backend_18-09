@@ -1,0 +1,21 @@
+@model SportsTournamentManager.Models.Discipline
+
+<h2>Xóa môn thi đấu</h2>
+
+<h4>Bạn có chắc muốn xóa môn này?</h4>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-2">Tên môn</dt>
+    <dd class="col-sm-10">@Model.Name</dd>
+
+    <dt class="col-sm-2">Loại bộ môn</dt>
+    <dd class="col-sm-10">@Model.Type</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>

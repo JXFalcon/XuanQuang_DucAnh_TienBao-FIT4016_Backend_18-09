@@ -1,0 +1,11 @@
+@model SportsTournamentManager.Models.Match
+
+<h2>Sửa trận đấu</h2>
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+
+    <!-- Các field giống Create -->
+    ...
+</form>

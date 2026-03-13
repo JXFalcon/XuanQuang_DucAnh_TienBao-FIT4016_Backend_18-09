@@ -1,0 +1,38 @@
+@model IEnumerable<SportsTournamentManager.Models.Coach>
+
+<h2>Danh sách HLV</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Thêm HLV mới</a>
+</p>
+
+@if (TempData["Message"] != null)
+{
+    <script>alert('@Html.Raw(TempData["Message"])');</script>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Quốc tịch</th>
+            <th>Đội</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.Name</td>
+            <td>@c.Nationality</td>
+            <td>@c.Team?.Name</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@c.Id" class="btn btn-primary">Sửa</a>
+                <a asp-action="Details" asp-route-id="@c.Id" class="btn btn-info">Chi tiết</a>
+                <a asp-action="Delete" asp-route-id="@c.Id" class="btn btn-danger">Xóa</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

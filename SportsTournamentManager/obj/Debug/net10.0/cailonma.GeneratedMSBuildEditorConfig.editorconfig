@@ -19,41 +19,201 @@ build_property.TargetFrameworkIdentifier = .NETCoreApp
 build_property.TargetFrameworkVersion = v10.0
 build_property.RootNamespace = cailonma
 build_property.RootNamespace = cailonma
-build_property.ProjectDir = C:\Users\OS\Documents\java, C#\C#_modern\SportsTournamentManager\
+build_property.ProjectDir = C:\Users\OS\Documents\java, c#\C#_modern\sportstournamentmanager\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\OS\Documents\java, C#\C#_modern\SportsTournamentManager
+build_property.MSBuildProjectDirectory = C:\Users\OS\Documents\java, c#\C#_modern\sportstournamentmanager
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/OS/Documents/java\, C\#/C\#_modern/SportsTournamentManager/Views/Home/Index.cshtml]
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Coaches/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29hY2hlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Coaches/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29hY2hlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Coaches/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29hY2hlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Coaches/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29hY2hlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Coaches/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29hY2hlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Disciplines/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY2lwbGluZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Disciplines/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY2lwbGluZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Disciplines/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY2lwbGluZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Disciplines/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY2lwbGluZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Disciplines/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY2lwbGluZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/OS/Documents/java\, C\#/C\#_modern/SportsTournamentManager/Views/Home/Privacy.cshtml]
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/OS/Documents/java\, C\#/C\#_modern/SportsTournamentManager/Views/Shared/Error.cshtml]
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Matches/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0Y2hlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Matches/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0Y2hlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Matches/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0Y2hlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Matches/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0Y2hlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Matches/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0Y2hlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Players/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWVyc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Players/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWVyc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Players/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWVyc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Players/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWVyc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Players/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWVyc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/OS/Documents/java\, C\#/C\#_modern/SportsTournamentManager/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/OS/Documents/java\, C\#/C\#_modern/SportsTournamentManager/Views/_ViewImports.cshtml]
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Sponsors/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BvbnNvcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Sponsors/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BvbnNvcnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Sponsors/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BvbnNvcnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Sponsors/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BvbnNvcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Sponsors/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BvbnNvcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Teams/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhbXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Teams/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhbXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Teams/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhbXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Teams/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhbXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Teams/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhbXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Tournaments/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cm5hbWVudHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Tournaments/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cm5hbWVudHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Tournaments/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cm5hbWVudHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Tournaments/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cm5hbWVudHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Tournaments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cm5hbWVudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Venues/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Venues/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Venues/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Venues/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Venues/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/OS/Documents/java\, C\#/C\#_modern/SportsTournamentManager/Views/_ViewStart.cshtml]
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/OS/Documents/java\, C\#/C\#_modern/SportsTournamentManager/Views/Shared/_Layout.cshtml]
+[C:/Users/OS/Documents/java\, c\#/C\#_modern/sportstournamentmanager/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-7g4v9vwshq

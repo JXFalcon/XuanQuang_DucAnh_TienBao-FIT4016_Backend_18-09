@@ -22,6 +22,33 @@ namespace cailonma.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("SportsTournamentManager.Models.Coach", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nationality")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TeamId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TeamId")
+                        .IsUnique();
+
+                    b.ToTable("Coaches");
+                });
+
             modelBuilder.Entity("SportsTournamentManager.Models.Discipline", b =>
                 {
                     b.Property<int>("Id")
@@ -221,6 +248,17 @@ namespace cailonma.Migrations
                     b.ToTable("Venues");
                 });
 
+            modelBuilder.Entity("SportsTournamentManager.Models.Coach", b =>
+                {
+                    b.HasOne("SportsTournamentManager.Models.Team", "Team")
+                        .WithOne("Coach")
+                        .HasForeignKey("SportsTournamentManager.Models.Coach", "TeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Team");
+                });
+
             modelBuilder.Entity("SportsTournamentManager.Models.Match", b =>
                 {
                     b.HasOne("SportsTournamentManager.Models.Team", "TeamA")
@@ -309,6 +347,8 @@ namespace cailonma.Migrations
 
             modelBuilder.Entity("SportsTournamentManager.Models.Team", b =>
                 {
+                    b.Navigation("Coach");
+
                     b.Navigation("Players");
                 });
 

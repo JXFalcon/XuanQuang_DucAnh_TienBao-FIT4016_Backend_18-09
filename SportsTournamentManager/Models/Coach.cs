@@ -6,6 +6,6 @@ namespace SportsTournamentManager.Models {
 
         // Mỗi Coach gắn với một Team
         public int TeamId { get; set; }
-        public required Team Team { get; set; }
+        public Team? Team { get; set; }
     }
 }

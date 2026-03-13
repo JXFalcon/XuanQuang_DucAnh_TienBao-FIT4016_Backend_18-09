@@ -1,0 +1,26 @@
+@model SportsTournamentManager.Models.Coach
+
+<h2>Thêm HLV mới</h2>
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Name">Tên</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Nationality">Quốc tịch</label>
+        <input asp-for="Nationality" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TeamId">Đội</label>
+        <select asp-for="TeamId" class="form-control" asp-items="ViewBag.TeamId"></select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Lưu</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>

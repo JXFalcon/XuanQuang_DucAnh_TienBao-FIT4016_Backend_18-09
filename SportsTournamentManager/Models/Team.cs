@@ -9,6 +9,6 @@ namespace SportsTournamentManager.Models {
         public ICollection<Player> Players { get; set; } = new List<Player>();
 
         // Quan hệ 1-1 với Coach
-        public required Coach Coach { get; set; }
+        public Coach? Coach { get; set; }
     }
 }
