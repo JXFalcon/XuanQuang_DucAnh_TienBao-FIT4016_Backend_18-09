@@ -3,7 +3,7 @@
 <h2>Chi tiết giải đấu</h2>
 
 <dl class="row">
-    <dt class="col-sm-2">Tên</dt>
+    <dt class="col-sm-2">Tên giải</dt>
     <dd class="col-sm-10">@Model.Name</dd>
 
     <dt class="col-sm-2">Loại</dt>
@@ -15,12 +15,35 @@
     <dt class="col-sm-2">Ngày kết thúc</dt>
     <dd class="col-sm-10">@Model.EndDate.ToString("dd/MM/yyyy")</dd>
 
-    <dt class="col-sm-2">Môn</dt>
+    <dt class="col-sm-2">Môn thi đấu</dt>
     <dd class="col-sm-10">@Model.Discipline?.Name</dd>
 
     <dt class="col-sm-2">Địa điểm</dt>
     <dd class="col-sm-10">@Model.Venue?.Name</dd>
 </dl>
+
+<h4>Danh sách trận đấu</h4>
+<ul>
+@foreach (var m in Model.Matches)
+{
+    <li>
+        @m.Date.ToString("dd/MM/yyyy")
+        <!-- giả sử bạn có TeamA và TeamB -->
+        @if (m.TeamA != null && m.TeamB != null)
+        {
+            <text>- @m.TeamA.Name vs @m.TeamB.Name</text>
+        }
+    </li>
+}
+</ul>
+
+<h4>Nhà tài trợ</h4>
+<ul>
+@foreach (var s in Model.TournamentSponsors)
+{
+    <li>@s.Sponsor?.Name</li>
+}
+</ul>
 
 <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Sửa</a>
 <a asp-action="Index" class="btn btn-secondary">Quay lại</a>

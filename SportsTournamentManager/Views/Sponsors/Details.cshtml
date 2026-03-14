@@ -6,17 +6,9 @@
     <dt class="col-sm-2">Tên</dt>
     <dd class="col-sm-10">@Model.Name</dd>
 
-    <dt class="col-sm-2">Lĩnh vực</dt>
+    <dt class="col-sm-2">Ngành nghề</dt>
     <dd class="col-sm-10">@Model.Industry</dd>
 </dl>
-
-<h4>Danh sách giải đấu tài trợ</h4>
-<ul>
-@foreach (var ts in Model.TournamentSponsors)
-{
-    <li>@ts.Tournament?.Name</li>
-}
-</ul>
 
 <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Sửa</a>
 <a asp-action="Index" class="btn btn-secondary">Quay lại</a>

@@ -17,19 +17,7 @@ namespace SportsTournamentManager.Controllers
         // GET: Venues
         public async Task<IActionResult> Index()
         {
-            var venues = await _context.Venues.ToListAsync();
-            return View(venues);
-        }
-
-        // GET: Venues/Details/5
-        public async Task<IActionResult> Details(int id)
-        {
-            var venue = await _context.Venues
-                .Include(v => v.Tournaments)
-                .FirstOrDefaultAsync(v => v.Id == id);
-
-            if (venue == null) return NotFound();
-            return View(venue);
+            return View(await _context.Venues.ToListAsync());
         }
 
         // GET: Venues/Create
@@ -45,9 +33,9 @@ namespace SportsTournamentManager.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Venues.Add(venue);
+                _context.Add(venue);
                 await _context.SaveChangesAsync();
-                TempData["Message"] = $"Địa điểm {venue.Name} đã được tạo thành công!";
+                TempData["Message"] = $"Địa điểm {venue.Name} đã được tạo!";
                 return RedirectToAction(nameof(Index));
             }
             return View(venue);
@@ -70,15 +58,18 @@ namespace SportsTournamentManager.Controllers
 
             if (ModelState.IsValid)
             {
-                var existing = await _context.Venues.FindAsync(id);
-                if (existing == null) return NotFound();
-
-                existing.Name = venue.Name;
-                existing.Location = venue.Location;
-                existing.Capacity = venue.Capacity;
-
-                await _context.SaveChangesAsync();
-                TempData["Message"] = $"Địa điểm {venue.Name} đã được cập nhật thành công!";
+                try
+                {
+                    _context.Update(venue);
+                    await _context.SaveChangesAsync();
+                    TempData["Message"] = $"Địa điểm {venue.Name} đã được cập nhật!";
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!_context.Venues.Any(e => e.Id == venue.Id))
+                        return NotFound();
+                    else throw;
+                }
                 return RedirectToAction(nameof(Index));
             }
             return View(venue);
@@ -87,7 +78,7 @@ namespace SportsTournamentManager.Controllers
         // GET: Venues/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
-            var venue = await _context.Venues.FindAsync(id);
+            var venue = await _context.Venues.FirstOrDefaultAsync(m => m.Id == id);
             if (venue == null) return NotFound();
             return View(venue);
         }
@@ -102,9 +93,17 @@ namespace SportsTournamentManager.Controllers
             {
                 _context.Venues.Remove(venue);
                 await _context.SaveChangesAsync();
-                TempData["Message"] = $"Địa điểm {venue.Name} đã được xóa thành công!";
+                TempData["Message"] = $"Địa điểm {venue.Name} đã được xóa!";
             }
             return RedirectToAction(nameof(Index));
+        }
+
+        // GET: Venues/Details/5
+        public async Task<IActionResult> Details(int id)
+        {
+            var venue = await _context.Venues.FirstOrDefaultAsync(m => m.Id == id);
+            if (venue == null) return NotFound();
+            return View(venue);
         }
     }
 }

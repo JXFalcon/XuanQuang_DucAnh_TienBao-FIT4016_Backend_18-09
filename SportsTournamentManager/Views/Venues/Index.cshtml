@@ -2,14 +2,16 @@
 
 <h2>Danh sách địa điểm</h2>
 
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
 <p>
     <a asp-action="Create" class="btn btn-success">Thêm địa điểm mới</a>
 </p>
-
-@if (TempData["Message"] != null)
-{
-    <script>alert('@Html.Raw(TempData["Message"])');</script>
-}
 
 <table class="table">
     <thead>

@@ -2,20 +2,22 @@
 
 <h2>Danh sách nhà tài trợ</h2>
 
-<p>
-    <a asp-action="Create" class="btn btn-success">Thêm nhà tài trợ mới</a>
-</p>
-
 @if (TempData["Message"] != null)
 {
-    <script>alert('@Html.Raw(TempData["Message"])');</script>
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
 }
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Thêm nhà tài trợ</a>
+</p>
 
 <table class="table">
     <thead>
         <tr>
             <th>Tên</th>
-            <th>Lĩnh vực</th>
+            <th>Ngành nghề</th>
             <th></th>
         </tr>
     </thead>

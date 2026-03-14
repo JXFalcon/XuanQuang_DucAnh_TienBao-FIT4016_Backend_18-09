@@ -18,29 +18,16 @@ namespace SportsTournamentManager.Controllers
         // GET: Tournaments
         public async Task<IActionResult> Index()
         {
-            var tournaments = await _context.Tournaments
+            var tournaments = _context.Tournaments
                 .Include(t => t.Discipline)
-                .Include(t => t.Venue)
-                .ToListAsync();
-            return View(tournaments);
-        }
-
-        // GET: Tournaments/Details/5
-        public async Task<IActionResult> Details(int id)
-        {
-            var tournament = await _context.Tournaments
-                .Include(t => t.Discipline)
-                .Include(t => t.Venue)
-                .Include(t => t.Matches)
-                .FirstOrDefaultAsync(t => t.Id == id);
-
-            if (tournament == null) return NotFound();
-            return View(tournament);
+                .Include(t => t.Venue);
+            return View(await tournaments.ToListAsync());
         }
 
         // GET: Tournaments/Create
         public IActionResult Create()
         {
+            ViewData["Type"] = new SelectList(Enum.GetValues(typeof(TournamentType)));
             ViewData["DisciplineId"] = new SelectList(_context.Disciplines, "Id", "Name");
             ViewData["VenueId"] = new SelectList(_context.Venues, "Id", "Name");
             return View();
@@ -53,76 +40,55 @@ namespace SportsTournamentManager.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Tournaments.Add(tournament);
+                _context.Add(tournament);
                 await _context.SaveChangesAsync();
-                TempData["Message"] = $"Giải đấu {tournament.Name} đã được tạo thành công!";
+                TempData["Message"] = $"Giải {tournament.Name} đã được tạo!";
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Type"] = new SelectList(Enum.GetValues(typeof(TournamentType)), tournament.Type);
+            ViewData["DisciplineId"] = new SelectList(_context.Disciplines, "Id", "Name", tournament.DisciplineId);
+            ViewData["VenueId"] = new SelectList(_context.Venues, "Id", "Name", tournament.VenueId);
             return View(tournament);
         }
 
         // GET: Tournaments/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            var tournament = await _context.Tournaments
-                .Include(t => t.TournamentSponsors)
-                .ThenInclude(ts => ts.Sponsor)
-                .FirstOrDefaultAsync(t => t.Id == id);
-
+            var tournament = await _context.Tournaments.FindAsync(id);
             if (tournament == null) return NotFound();
 
+            ViewData["Type"] = new SelectList(Enum.GetValues(typeof(TournamentType)), tournament.Type);
             ViewData["DisciplineId"] = new SelectList(_context.Disciplines, "Id", "Name", tournament.DisciplineId);
             ViewData["VenueId"] = new SelectList(_context.Venues, "Id", "Name", tournament.VenueId);
-
-            // Load tất cả sponsor
-            var sponsors = await _context.Sponsors.ToListAsync();
-            ViewBag.Sponsors = sponsors.Select(s => new SelectListItem
-            {
-                Value = s.Id.ToString(),
-                Text = s.Name,
-                Selected = tournament.TournamentSponsors.Any(ts => ts.SponsorId == s.Id)
-            }).ToList();
-
             return View(tournament);
         }
 
         // POST: Tournaments/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Tournament tournament, int[] selectedSponsors)
+        public async Task<IActionResult> Edit(int id, Tournament tournament)
         {
             if (id != tournament.Id) return NotFound();
 
             if (ModelState.IsValid)
             {
-                var existing = await _context.Tournaments
-                    .Include(t => t.TournamentSponsors)
-                    .FirstOrDefaultAsync(t => t.Id == id);
-
-                if (existing == null) return NotFound();
-
-                existing.Name = tournament.Name;
-                existing.Type = tournament.Type;
-                existing.StartDate = tournament.StartDate;
-                existing.EndDate = tournament.EndDate;
-                existing.DisciplineId = tournament.DisciplineId;
-                existing.VenueId = tournament.VenueId;
-
-                // Cập nhật sponsor
-                existing.TournamentSponsors.Clear();
-                foreach (var sponsorId in selectedSponsors)
+                try
                 {
-                    existing.TournamentSponsors.Add(new TournamentSponsor
-                    {
-                        TournamentId = existing.Id,
-                        SponsorId = sponsorId
-                    });
+                    _context.Update(tournament);
+                    await _context.SaveChangesAsync();
+                    TempData["Message"] = $"Giải {tournament.Name} đã được cập nhật!";
                 }
-
-                await _context.SaveChangesAsync();
-                TempData["Message"] = $"Giải đấu {tournament.Name} đã được cập nhật thành công!";
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!_context.Tournaments.Any(e => e.Id == tournament.Id))
+                        return NotFound();
+                    else throw;
+                }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Type"] = new SelectList(Enum.GetValues(typeof(TournamentType)), tournament.Type);
+            ViewData["DisciplineId"] = new SelectList(_context.Disciplines, "Id", "Name", tournament.DisciplineId);
+            ViewData["VenueId"] = new SelectList(_context.Venues, "Id", "Name", tournament.VenueId);
             return View(tournament);
         }
 
@@ -132,8 +98,7 @@ namespace SportsTournamentManager.Controllers
             var tournament = await _context.Tournaments
                 .Include(t => t.Discipline)
                 .Include(t => t.Venue)
-                .FirstOrDefaultAsync(t => t.Id == id);
-
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (tournament == null) return NotFound();
             return View(tournament);
         }
@@ -148,9 +113,20 @@ namespace SportsTournamentManager.Controllers
             {
                 _context.Tournaments.Remove(tournament);
                 await _context.SaveChangesAsync();
-                TempData["Message"] = $"Giải đấu {tournament.Name} đã được xóa thành công!";
+                TempData["Message"] = $"Giải {tournament.Name} đã được xóa!";
             }
             return RedirectToAction(nameof(Index));
+        }
+        // GET: Tournaments/Details/5
+        public async Task<IActionResult> Details(int id)
+        {
+            var tournament = await _context.Tournaments
+                .Include(t => t.Discipline)
+                .Include(t => t.Venue)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (tournament == null) return NotFound();
+            return View(tournament);
         }
     }
 }
