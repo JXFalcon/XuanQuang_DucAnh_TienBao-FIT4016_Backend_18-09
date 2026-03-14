@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportsTournamentManager.Data;
 using SportsTournamentManager.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SportsTournamentManager.Controllers
 {
+    [Authorize] // yêu cầu đăng nhập cho toàn bộ controller
     public class SponsorsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -14,19 +16,31 @@ namespace SportsTournamentManager.Controllers
             _context = context;
         }
 
-        // GET: Sponsors
+        // GET: Sponsors (Viewer và Admin đều xem được)
+        [Authorize(Roles = "Admin,Viewer")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Sponsors.ToListAsync());
         }
 
-        // GET: Sponsors/Create
+        // GET: Sponsors/Details/5 (Viewer và Admin đều xem được)
+        [Authorize(Roles = "Admin,Viewer")]
+        public async Task<IActionResult> Details(int id)
+        {
+            var sponsor = await _context.Sponsors.FirstOrDefaultAsync(m => m.Id == id);
+            if (sponsor == null) return NotFound();
+            return View(sponsor);
+        }
+
+        // GET: Sponsors/Create (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Sponsors/Create
+        // POST: Sponsors/Create (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Sponsor sponsor)
@@ -41,7 +55,8 @@ namespace SportsTournamentManager.Controllers
             return View(sponsor);
         }
 
-        // GET: Sponsors/Edit/5
+        // GET: Sponsors/Edit/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id)
         {
             var sponsor = await _context.Sponsors.FindAsync(id);
@@ -49,7 +64,8 @@ namespace SportsTournamentManager.Controllers
             return View(sponsor);
         }
 
-        // POST: Sponsors/Edit/5
+        // POST: Sponsors/Edit/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Sponsor sponsor)
@@ -75,7 +91,8 @@ namespace SportsTournamentManager.Controllers
             return View(sponsor);
         }
 
-        // GET: Sponsors/Delete/5
+        // GET: Sponsors/Delete/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var sponsor = await _context.Sponsors.FirstOrDefaultAsync(m => m.Id == id);
@@ -83,7 +100,8 @@ namespace SportsTournamentManager.Controllers
             return View(sponsor);
         }
 
-        // POST: Sponsors/Delete/5
+        // POST: Sponsors/Delete/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -96,13 +114,6 @@ namespace SportsTournamentManager.Controllers
                 TempData["Message"] = $"Nhà tài trợ {sponsor.Name} đã được xóa!";
             }
             return RedirectToAction(nameof(Index));
-        }
-        // GET: Sponsors/Details/5
-        public async Task<IActionResult> Details(int id)
-        {
-            var sponsor = await _context.Sponsors.FirstOrDefaultAsync(m => m.Id == id);
-            if (sponsor == null) return NotFound();
-            return View(sponsor);
         }
     }
 }

@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SportsTournamentManager.Data;
 using SportsTournamentManager.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SportsTournamentManager.Controllers
 {
+    [Authorize] // yêu cầu đăng nhập cho toàn bộ controller
     public class DisciplinesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -15,13 +17,15 @@ namespace SportsTournamentManager.Controllers
             _context = context;
         }
 
-        // GET: Disciplines
+        // GET: Disciplines (Viewer và Admin đều xem được)
+        [Authorize(Roles = "Admin,Viewer")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Disciplines.ToListAsync());
         }
 
-        // GET: Disciplines/Details/5
+        // GET: Disciplines/Details/5 (Viewer và Admin đều xem được)
+        [Authorize(Roles = "Admin,Viewer")]
         public async Task<IActionResult> Details(int id)
         {
             var discipline = await _context.Disciplines
@@ -32,14 +36,16 @@ namespace SportsTournamentManager.Controllers
             return View(discipline);
         }
 
-        // GET: Disciplines/Create
+        // GET: Disciplines/Create (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["Type"] = new SelectList(Enum.GetValues(typeof(TournamentType)));
             return View();
         }
 
-        // POST: Disciplines/Create
+        // POST: Disciplines/Create (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Discipline discipline)
@@ -55,7 +61,8 @@ namespace SportsTournamentManager.Controllers
             return View(discipline);
         }
 
-        // GET: Disciplines/Edit/5
+        // GET: Disciplines/Edit/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id)
         {
             var discipline = await _context.Disciplines.FindAsync(id);
@@ -65,7 +72,8 @@ namespace SportsTournamentManager.Controllers
             return View(discipline);
         }
 
-        // POST: Disciplines/Edit/5
+        // POST: Disciplines/Edit/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Discipline discipline)
@@ -92,7 +100,8 @@ namespace SportsTournamentManager.Controllers
             return View(discipline);
         }
 
-        // GET: Disciplines/Delete/5
+        // GET: Disciplines/Delete/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var discipline = await _context.Disciplines.FirstOrDefaultAsync(m => m.Id == id);
@@ -100,7 +109,8 @@ namespace SportsTournamentManager.Controllers
             return View(discipline);
         }
 
-        // POST: Disciplines/Delete/5
+        // POST: Disciplines/Delete/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

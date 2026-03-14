@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SportsTournamentManager.Data;
 using SportsTournamentManager.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SportsTournamentManager.Controllers
 {
+    [Authorize] // yêu cầu đăng nhập cho toàn bộ controller
     public class MatchesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -15,7 +17,8 @@ namespace SportsTournamentManager.Controllers
             _context = context;
         }
 
-        // GET: Matches
+        // GET: Matches (Viewer và Admin đều xem được)
+        [Authorize(Roles = "Admin,Viewer")]
         public async Task<IActionResult> Index()
         {
             var matches = await _context.Matches
@@ -26,7 +29,8 @@ namespace SportsTournamentManager.Controllers
             return View(matches);
         }
 
-        // GET: Matches/Details/5
+        // GET: Matches/Details/5 (Viewer và Admin đều xem được)
+        [Authorize(Roles = "Admin,Viewer")]
         public async Task<IActionResult> Details(int id)
         {
             var match = await _context.Matches
@@ -39,7 +43,8 @@ namespace SportsTournamentManager.Controllers
             return View(match);
         }
 
-        // GET: Matches/Create
+        // GET: Matches/Create (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["TournamentId"] = new SelectList(_context.Tournaments, "Id", "Name");
@@ -48,7 +53,8 @@ namespace SportsTournamentManager.Controllers
             return View();
         }
 
-        // POST: Matches/Create
+        // POST: Matches/Create (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Match match)
@@ -63,7 +69,8 @@ namespace SportsTournamentManager.Controllers
             return View(match);
         }
 
-        // GET: Matches/Edit/5
+        // GET: Matches/Edit/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id)
         {
             var match = await _context.Matches.FindAsync(id);
@@ -75,7 +82,8 @@ namespace SportsTournamentManager.Controllers
             return View(match);
         }
 
-        // POST: Matches/Edit/5
+        // POST: Matches/Edit/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Match match)
@@ -101,7 +109,8 @@ namespace SportsTournamentManager.Controllers
             return View(match);
         }
 
-        // GET: Matches/Delete/5
+        // GET: Matches/Delete/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var match = await _context.Matches
@@ -114,7 +123,8 @@ namespace SportsTournamentManager.Controllers
             return View(match);
         }
 
-        // POST: Matches/Delete/5
+        // POST: Matches/Delete/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

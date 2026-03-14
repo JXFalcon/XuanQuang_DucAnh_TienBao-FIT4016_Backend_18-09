@@ -2,15 +2,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportsTournamentManager.Data;
 using SportsTournamentManager.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SportsTournamentManager.Controllers
 {
+    [Authorize] // yêu cầu đăng nhập cho toàn bộ controller
     public class TeamsController : Controller
     {
         private readonly ApplicationDbContext _context;
         public TeamsController(ApplicationDbContext context) => _context = context;
 
-        // GET: Teams
+        // GET: Teams (Viewer và Admin đều xem được)
+        [Authorize(Roles = "Admin,Viewer")]
         public async Task<IActionResult> Index()
         {
             var teams = await _context.Teams
@@ -20,7 +23,8 @@ namespace SportsTournamentManager.Controllers
             return View(teams);
         }
 
-        // GET: Teams/Details/5
+        // GET: Teams/Details/5 (Viewer và Admin đều xem được)
+        [Authorize(Roles = "Admin,Viewer")]
         public async Task<IActionResult> Details(int id)
         {
             var team = await _context.Teams
@@ -32,27 +36,27 @@ namespace SportsTournamentManager.Controllers
             return View(team);
         }
 
-        // GET: Teams/Create
+        // GET: Teams/Create (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Teams/Create
+        // POST: Teams/Create (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Team team)
         {
             if (ModelState.IsValid)
             {
-                // Tạo Team mới
                 var newTeam = new Team
                 {
                     Name = team.Name,
                     Country = team.Country
                 };
 
-                // Nếu có nhập Coach thì tạo Coach gắn với Team
                 if (team.Coach != null)
                 {
                     newTeam.Coach = new Coach
@@ -71,18 +75,20 @@ namespace SportsTournamentManager.Controllers
             return View(team);
         }
 
-        // GET: Teams/Edit/5
+        // GET: Teams/Edit/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id)
         {
             var team = await _context.Teams
-                .Include(t => t.Coach) // load Coach nếu có
+                .Include(t => t.Coach)
                 .FirstOrDefaultAsync(t => t.Id == id);
 
             if (team == null) return NotFound();
             return View(team);
         }
 
-        // POST: Teams/Edit/5
+        // POST: Teams/Edit/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Team team)
@@ -97,11 +103,9 @@ namespace SportsTournamentManager.Controllers
 
                 if (existingTeam == null) return NotFound();
 
-                // Cập nhật Team
                 existingTeam.Name = team.Name;
                 existingTeam.Country = team.Country;
 
-                // Nếu có Coach thì cập nhật Coach
                 if (existingTeam.Coach != null && team.Coach != null)
                 {
                     existingTeam.Coach.Name = team.Coach.Name;
@@ -115,7 +119,21 @@ namespace SportsTournamentManager.Controllers
             return View(team);
         }
 
-        // POST: Teams/Delete/5
+        // GET: Teams/Delete/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var team = await _context.Teams
+                .Include(t => t.Coach)
+                .Include(t => t.Players)
+                .FirstOrDefaultAsync(t => t.Id == id);
+
+            if (team == null) return NotFound();
+            return View(team);
+        }
+
+        // POST: Teams/Delete/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

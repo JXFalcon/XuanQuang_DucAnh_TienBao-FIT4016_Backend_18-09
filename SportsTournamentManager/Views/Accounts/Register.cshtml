@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Đăng ký";
+}
+
+<h2>Đăng ký tài khoản</h2>
+
+<form asp-action="Register" method="post">
+    <div class="form-group">
+        <label for="username">Tên đăng nhập</label>
+        <input type="text" id="username" name="username" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Mật khẩu</label>
+        <input type="password" id="password" name="password" class="form-control" required />
+    </div>
+
+    <!-- Nếu muốn cho phép chọn role khi đăng ký -->
+    <div class="form-group">
+        <label for="role">Vai trò</label>
+        <select id="role" name="role" class="form-control">
+            <option value="1">Viewer</option>
+            <option value="0">Admin</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Đăng ký</button>
+</form>
+
+@if (ViewBag.Error != null)
+{
+    <p class="text-danger">@ViewBag.Error</p>
+}
+@if (ViewBag.Success != null)
+{
+    <p class="text-success">@ViewBag.Success</p>
+}

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportsTournamentManager.Data;
@@ -14,19 +15,29 @@ namespace SportsTournamentManager.Controllers
             _context = context;
         }
 
-        // GET: Venues
+        // Viewer và Admin đều xem được
+        [Authorize(Roles = "Admin,Viewer")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Venues.ToListAsync());
         }
 
-        // GET: Venues/Create
+        [Authorize(Roles = "Admin,Viewer")]
+        public async Task<IActionResult> Details(int id)
+        {
+            var venue = await _context.Venues.FirstOrDefaultAsync(m => m.Id == id);
+            if (venue == null) return NotFound();
+            return View(venue);
+        }
+
+        // Chỉ Admin mới được tạo, sửa, xóa
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Venues/Create
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Venue venue)
@@ -41,7 +52,7 @@ namespace SportsTournamentManager.Controllers
             return View(venue);
         }
 
-        // GET: Venues/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id)
         {
             var venue = await _context.Venues.FindAsync(id);
@@ -49,7 +60,7 @@ namespace SportsTournamentManager.Controllers
             return View(venue);
         }
 
-        // POST: Venues/Edit/5
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Venue venue)
@@ -75,7 +86,7 @@ namespace SportsTournamentManager.Controllers
             return View(venue);
         }
 
-        // GET: Venues/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var venue = await _context.Venues.FirstOrDefaultAsync(m => m.Id == id);
@@ -83,7 +94,7 @@ namespace SportsTournamentManager.Controllers
             return View(venue);
         }
 
-        // POST: Venues/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -96,14 +107,6 @@ namespace SportsTournamentManager.Controllers
                 TempData["Message"] = $"Địa điểm {venue.Name} đã được xóa!";
             }
             return RedirectToAction(nameof(Index));
-        }
-
-        // GET: Venues/Details/5
-        public async Task<IActionResult> Details(int id)
-        {
-            var venue = await _context.Venues.FirstOrDefaultAsync(m => m.Id == id);
-            if (venue == null) return NotFound();
-            return View(venue);
         }
     }
 }

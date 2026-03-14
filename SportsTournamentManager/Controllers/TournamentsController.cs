@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SportsTournamentManager.Data;
 using SportsTournamentManager.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SportsTournamentManager.Controllers
 {
+    [Authorize] // yêu cầu đăng nhập cho toàn bộ controller
     public class TournamentsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -15,7 +17,8 @@ namespace SportsTournamentManager.Controllers
             _context = context;
         }
 
-        // GET: Tournaments
+        // GET: Tournaments (Viewer và Admin đều xem được)
+        [Authorize(Roles = "Admin,Viewer")]
         public async Task<IActionResult> Index()
         {
             var tournaments = _context.Tournaments
@@ -24,16 +27,32 @@ namespace SportsTournamentManager.Controllers
             return View(await tournaments.ToListAsync());
         }
 
-        // GET: Tournaments/Create
+        // GET: Tournaments/Details/5 (Viewer và Admin đều xem được)
+        [Authorize(Roles = "Admin,Viewer")]
+        public async Task<IActionResult> Details(int id)
+        {
+            var tournament = await _context.Tournaments
+                .Include(t => t.Discipline)
+                .Include(t => t.Venue)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (tournament == null) return NotFound();
+            return View(tournament);
+        }
+
+        // GET: Tournaments/Create (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["Type"] = new SelectList(Enum.GetValues(typeof(TournamentType)));
             ViewData["DisciplineId"] = new SelectList(_context.Disciplines, "Id", "Name");
             ViewData["VenueId"] = new SelectList(_context.Venues, "Id", "Name");
+            ViewData["Sponsors"] = new MultiSelectList(_context.Sponsors, "Id", "Name"); // thêm dòng này
             return View();
         }
 
-        // POST: Tournaments/Create
+        // POST: Tournaments/Create (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Tournament tournament)
@@ -51,7 +70,8 @@ namespace SportsTournamentManager.Controllers
             return View(tournament);
         }
 
-        // GET: Tournaments/Edit/5
+        // GET: Tournaments/Edit/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id)
         {
             var tournament = await _context.Tournaments.FindAsync(id);
@@ -63,7 +83,8 @@ namespace SportsTournamentManager.Controllers
             return View(tournament);
         }
 
-        // POST: Tournaments/Edit/5
+        // POST: Tournaments/Edit/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Tournament tournament)
@@ -92,7 +113,8 @@ namespace SportsTournamentManager.Controllers
             return View(tournament);
         }
 
-        // GET: Tournaments/Delete/5
+        // GET: Tournaments/Delete/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var tournament = await _context.Tournaments
@@ -103,7 +125,8 @@ namespace SportsTournamentManager.Controllers
             return View(tournament);
         }
 
-        // POST: Tournaments/Delete/5
+        // POST: Tournaments/Delete/5 (chỉ Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -116,17 +139,6 @@ namespace SportsTournamentManager.Controllers
                 TempData["Message"] = $"Giải {tournament.Name} đã được xóa!";
             }
             return RedirectToAction(nameof(Index));
-        }
-        // GET: Tournaments/Details/5
-        public async Task<IActionResult> Details(int id)
-        {
-            var tournament = await _context.Tournaments
-                .Include(t => t.Discipline)
-                .Include(t => t.Venue)
-                .FirstOrDefaultAsync(m => m.Id == id);
-
-            if (tournament == null) return NotFound();
-            return View(tournament);
         }
     }
 }

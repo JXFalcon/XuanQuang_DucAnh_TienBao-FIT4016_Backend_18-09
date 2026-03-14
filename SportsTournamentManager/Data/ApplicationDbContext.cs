@@ -14,6 +14,7 @@ namespace SportsTournamentManager.Data {
         public DbSet<Sponsor> Sponsors { get; set; }
         public DbSet<TournamentSponsor> TournamentSponsors { get; set; }
         public DbSet<Coach> Coaches { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

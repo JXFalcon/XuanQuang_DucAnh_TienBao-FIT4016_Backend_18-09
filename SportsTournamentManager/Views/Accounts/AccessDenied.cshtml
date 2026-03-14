@@ -1,0 +1,29 @@
+@{
+    Layout = "_Layout";
+}
+
+<div style="text-align:center; margin-top:50px;">
+    <h2 style="color:red;">🚫 Access Denied</h2>
+    <p>Bạn không có quyền truy cập vào trang này.</p>
+    <p>Quay lại sau <span id="countdown">3</span> giây...</p>
+
+    <!-- Nút quay lại ngay -->
+    <button onclick="window.history.back()" 
+            style="margin-top:20px; padding:10px 20px; background-color:#dc3545; color:white; border:none; border-radius:5px; cursor:pointer;">
+        Quay lại ngay
+    </button>
+</div>
+
+<script>
+    let seconds = 3;
+    let countdownElement = document.getElementById("countdown");
+
+    let interval = setInterval(function () {
+        seconds--;
+        countdownElement.textContent = seconds;
+        if (seconds <= 0) {
+            clearInterval(interval);
+            window.history.back(); // quay lại trang trước
+        }
+    }, 1000);
+</script>
