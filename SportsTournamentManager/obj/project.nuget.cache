@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "Oxf4J4h84jQ=",
   "success": true,
   "projectFilePath": "D:\\XuanQuang_DucAnh-FIT4016_Backend_18-09\\SportsTournamentManager\\cailonma.csproj",
-=======
-  "dgSpecHash": "xJwL4sIjml0=",
-  "success": true,
-  "projectFilePath": "C:\\Users\\OS\\Documents\\java, c#\\c#_modern\\sportstournamentmanager\\cailonma.csproj",
->>>>>>> d38df2a47898c632d0d71778f6dc0b95abefcf60
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
