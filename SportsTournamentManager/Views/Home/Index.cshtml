@@ -1,8 +1,51 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="stylesheet" href="~/css/home.css" />
+<script src="~/js/home.js"></script>
+
+<div class="home-container">
+    <!-- Banner -->
+    <div class="home-banner">
+        <h1 class="home-title">🏆 Sports Tournament Manager</h1>
+        <p class="home-subtitle">Nền tảng quản lý giải đấu thể thao toàn diện</p>
+    </div>
+
+    <!-- Giới thiệu (căn lề trái) -->
+    <div class="home-intro-left">
+        <h2>Giới thiệu</h2>
+        <p>
+            Sports Tournament Manager giúp bạn dễ dàng tổ chức và quản lý các giải đấu thể thao.
+            Từ việc tạo giải đấu, quản lý địa điểm, thêm nhà tài trợ cho đến lên lịch và theo dõi kết quả trận đấu,
+            tất cả đều được tích hợp trong một hệ thống duy nhất.
+        </p>
+        <p>
+            Với giao diện trực quan và phân quyền rõ ràng (Admin & Viewer), ứng dụng đảm bảo tính bảo mật,
+            đồng thời mang lại trải nghiệm thuận tiện cho người dùng.
+        </p>
+    </div>
+
+    <!-- Các chức năng chính -->
+    <div class="home-sections">
+        <div class="home-card" onclick="location.href='/Tournaments'">
+            <h2>Giải đấu</h2>
+            <p>Tạo và quản lý các giải đấu thể thao.</p>
+        </div>
+
+        <div class="home-card" onclick="location.href='/Venues'">
+            <h2>Địa điểm</h2>
+            <p>Quản lý sân vận động và địa điểm thi đấu.</p>
+        </div>
+
+        <div class="home-card" onclick="location.href='/Sponsors'">
+            <h2>Nhà tài trợ</h2>
+            <p>Thêm và quản lý các nhà tài trợ.</p>
+        </div>
+
+        <div class="home-card" onclick="location.href='/Matches'">
+            <h2>Trận đấu</h2>
+            <p>Lên lịch và theo dõi kết quả trận đấu.</p>
+        </div>
+    </div>
 </div>
