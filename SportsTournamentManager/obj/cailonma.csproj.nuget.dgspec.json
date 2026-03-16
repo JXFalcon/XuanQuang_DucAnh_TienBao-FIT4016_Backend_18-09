@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\XuanQuang_DucAnh-FIT4016_Backend_18-09\\SportsTournamentManager\\cailonma.csproj": {}
+    "C:\\Users\\OS\\Documents\\java, c#\\c#_modern\\sportstournamentmanager\\cailonma.csproj": {}
   },
   "projects": {
-    "D:\\XuanQuang_DucAnh-FIT4016_Backend_18-09\\SportsTournamentManager\\cailonma.csproj": {
+    "C:\\Users\\OS\\Documents\\java, c#\\c#_modern\\sportstournamentmanager\\cailonma.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\XuanQuang_DucAnh-FIT4016_Backend_18-09\\SportsTournamentManager\\cailonma.csproj",
+        "projectUniqueName": "C:\\Users\\OS\\Documents\\java, c#\\c#_modern\\sportstournamentmanager\\cailonma.csproj",
         "projectName": "cailonma",
-        "projectPath": "D:\\XuanQuang_DucAnh-FIT4016_Backend_18-09\\SportsTournamentManager\\cailonma.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\XuanQuang_DucAnh-FIT4016_Backend_18-09\\SportsTournamentManager\\obj\\",
+        "projectPath": "C:\\Users\\OS\\Documents\\java, c#\\c#_modern\\sportstournamentmanager\\cailonma.csproj",
+        "packagesPath": "C:\\Users\\OS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\OS\\Documents\\java, c#\\c#_modern\\sportstournamentmanager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\OS\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -46,15 +46,20 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[10.0.0, )"
+              "version": "[10.0.3, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[10.0.0, )"
+              "version": "[10.0.3, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+<<<<<<< HEAD
+=======
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+>>>>>>> 297e0f6cc757ad06dd46ab25220ccc7b9d324622
               "target": "Package",
-              "version": "[10.0.0, )"
+              "version": "[10.0.3, )"
             }
           },
           "imports": [
